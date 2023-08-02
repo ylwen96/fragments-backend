@@ -4,40 +4,12 @@ Cloud Computing back-end API
 
 ## Authors
 
-- [@Yuelin Wen](https://www.github.com/yuelinwen)
+- [@Yuelin Wen](https://www.github.com/yuelin-wen)
 
-## Run Locally
+## Project Description
 
-Clone the project
+This is a microservice API that will run on the AWS. It uses GitHub action as a CI/CD pipeline. Each push to the main branch will trigger the pipeline. There is a docker file in the repo, the microservices will be pushed into both DockerHub and AWS image registry. Then it will be deployed to the AWS elastic beanstalk.
 
-```bash
-  git clone https://github.com/yuelin-wen/fragments-backend.git
-```
+## Contact
 
-Go to the project directory
-
-```bash
-  cd fragments-backend
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Test and check errors with lint
-
-```bash
-  npm run lint
-```
-
-Start the server (choose one of command to start)
-
-```bash
-  npm start
-  npm run dev
-  npm run debug
-```
-
-## Notes
+If you have any questions, please feel free to email weny36@mcmaster.ca
