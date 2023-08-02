@@ -1,0 +1,23 @@
+{
+  "name": "fragments-backend",
+  "version": "0.0.1",
+  "description": "Fragments backend API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuelin-wen/fragments-backend.git"
+  },
+  "keywords": [],
+  "author": "Yuelin Wen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuelin-wen/fragments-backend/issues"
+  },
+  "homepage": "https://github.com/yuelin-wen/fragments-backend#readme",
+  "devDependencies": {
+    "prettier": "3.0.0"
+  }
+}
