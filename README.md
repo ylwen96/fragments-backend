@@ -11,13 +11,13 @@ Cloud Computing back-end API
 Clone the project
 
 ```bash
-  git clone https://github.com/yuelinwen/safe-office-reservation.git
+  git clone https://github.com/yuelin-wen/fragments-backend.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd fragments
+  cd fragments-backend
 ```
 
 Install dependencies
