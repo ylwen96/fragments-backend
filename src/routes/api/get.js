@@ -9,9 +9,6 @@ module.exports = async (req, res) => {
   const ownerId = req.user;
   const expand = req.query.expand;
 
-  console.log(req)
-
-
   try {
     const fragments = await Fragment.byUser(ownerId, expand > 0);
     res.status(200).json(createSuccessResponse({
