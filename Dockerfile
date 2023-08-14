@@ -30,7 +30,7 @@ RUN npm install
 COPY ./src ./src
 
 # Start the container by running our server
-CMD npm start
+CMD ["node","src/index.js"]
 
 # We run our service on port 8080
 EXPOSE 8080
