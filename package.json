@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/yuelin-wen/fragments-backend#readme",
   "devDependencies": {
-    "@orangeopensource/hurl": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
     "eslint": "^8.46.0",
