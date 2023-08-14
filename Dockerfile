@@ -26,8 +26,11 @@ COPY package.json package-lock.json ./
 # Install node dependencies defined in package-lock.json
 RUN npm install
 
-# Copy src to /app/src/
+# Copy src/
 COPY ./src ./src
+
+# Copy our HTPASSWD file
+COPY ./tests/.htpasswd ./tests/.htpasswd
 
 # Start the container by running our server
 CMD ["node","src/index.js"]
