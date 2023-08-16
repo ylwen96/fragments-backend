@@ -1,11 +1,13 @@
+// Use https://www.npmjs.com/package/nanoid to create unique IDs
 const { nanoid } = require('nanoid');
+// Use https://www.npmjs.com/package/content-type to create/parse Content-Type headers
 const contentType = require('content-type');
-const logger = require('../logger')
 
+const logger = require('../logger')
 const md = require('markdown-it')();
-// convert large images in common formats to smaller, web-friendly JPEG, PNG, WebP, GIF and AVIF images of varying dimensions.
 const sharp = require('sharp');
 
+// Functions for working with fragment metadata/data using our DB
 const {
   readFragment,
   writeFragment,
@@ -17,6 +19,7 @@ const {
 
 class Fragment {
   constructor({ id, ownerId, created, updated, type, size = 0 }) {
+    // TODO
     if (id) {
       this.id = id;
     } else {
@@ -73,11 +76,13 @@ class Fragment {
    * @returns Promise<Array<Fragment>>
    */
   static async byUser(ownerId, expand = false) {
+    // TODO
     try {
-      const res = await listFragments(ownerId, expand);
-      return res;
+      const result = await listFragments(ownerId, expand);
+      return result;
     } catch (error) {
       logger.error({ error }, 'fragment class, unable to find fragments by user', { ownerId });
+      //return [] if any error, thus no need to throw error
       return [];
     }
   }
@@ -89,10 +94,11 @@ class Fragment {
    * @returns Promise<Fragment>
    */
   static async byId(ownerId, id) {
+    // TODO
     try {
-      const res = await readFragment(ownerId, id);
-      if (res) {
-        return res;
+      const result = await readFragment(ownerId, id);
+      if (result) {
+        return result;
       } else {
         throw new Error(`No fragment found by id ${ownerId}`);
       }
@@ -109,6 +115,7 @@ class Fragment {
    * @returns Promise
    */
   static delete(ownerId, id) {
+    // TODO
     try {
       return deleteFragment(ownerId, id);
     } catch (error) {
@@ -122,6 +129,7 @@ class Fragment {
    * @returns Promise
    */
   save() {
+    // TODO
     try {
       this.updated = new Date().toISOString();
       return writeFragment(this);
@@ -136,6 +144,7 @@ class Fragment {
    * @returns Promise<Buffer>
    */
   getData() {
+    // TODO
     try {
       return readFragmentData(this.ownerId, this.id);
     } catch (error) {
@@ -150,6 +159,7 @@ class Fragment {
    * @returns Promise
    */
   async setData(data) {
+    // TODO
     try {
       if (data) {
         this.updated = new Date().toISOString();
@@ -181,6 +191,7 @@ class Fragment {
    * @returns {boolean} true if fragment's type is text/*
    */
   get isText() {
+    // TODO
     const type = new RegExp('^text/*');
     return type.test(this.type);
   }
@@ -190,6 +201,7 @@ class Fragment {
    * @returns {Array<string>} list of supported mime types
    */
   get formats() {
+    // TODO
     return new Array(this.type.split(';')[0]);
   }
 
@@ -199,6 +211,7 @@ class Fragment {
    * @returns {boolean} true if we support this Content-Type (i.e., type/subtype)
    */
   static isSupportedType(value) {
+    // TODO
     const type = new RegExp('^text/*');
     if (type.test(value) || value == 'application/json' || value == 'image/png' || value == 'image/jpeg' || value == 'image/webp' || value == 'image/gif') {
       return true;
@@ -209,7 +222,7 @@ class Fragment {
 
   isSupportedExtension(value) {
     if (value == '.txt') {
-      if (this.type == 'text/plain' || this.type == 'text/markdown' || this.type == 'text/html') {
+      if (this.type == 'text/plain' || this.type == 'text/markdown' || this.type == 'text/html' || this.type == 'application/json') {
         return true;
       } else {
         return false;
@@ -232,36 +245,13 @@ class Fragment {
       } else {
         return false;
       }
-    }
-    else if (value == '.png') {
-      if (this.type == 'image/png') {
-        return true
+    } else if (value == '.png' || value == '.jpg' || value == '.webp' || value == '.gif') {
+      if (this.type == 'image/png' || this.type == 'image/jpeg' || this.type == 'image/webp' || this.type == 'image/gif') {
+        return true;
       } else {
-        return false
+        return false;
       }
-    }
-    else if (value == '.jpg') {
-      if (this.type == 'image/jpeg') {
-        return true
-      } else {
-        return false
-      }
-    }
-    else if (value == '.webp') {
-      if (this.type == 'image/webp') {
-        return true
-      } else {
-        return false
-      }
-    }
-    else if (value == '.gif') {
-      if (this.type == 'image/gif') {
-        return true
-      } else {
-        return false
-      }
-    }
-    else {
+    } else {
       return false;
     }
   }
