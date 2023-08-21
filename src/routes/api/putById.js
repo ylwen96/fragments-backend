@@ -11,6 +11,7 @@ module.exports = async (req, res) => {
 
   try {
     const fragment = new Fragment(await Fragment.byId(req.user, id));
+    fragment.type = type
     if (Fragment.isSupportedType(type)) {
       await fragment.save();
       await fragment.setData(req.body);
