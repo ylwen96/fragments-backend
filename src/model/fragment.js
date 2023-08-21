@@ -19,7 +19,6 @@ const {
 
 class Fragment {
   constructor({ id, ownerId, created, updated, type, size = 0 }) {
-    // TODO
     if (id) {
       this.id = id;
     } else {
@@ -76,7 +75,6 @@ class Fragment {
    * @returns Promise<Array<Fragment>>
    */
   static async byUser(ownerId, expand = false) {
-    // TODO
     try {
       const result = await listFragments(ownerId, expand);
       return result;
@@ -94,7 +92,6 @@ class Fragment {
    * @returns Promise<Fragment>
    */
   static async byId(ownerId, id) {
-    // TODO
     try {
       const result = await readFragment(ownerId, id);
       if (result) {
@@ -115,7 +112,6 @@ class Fragment {
    * @returns Promise
    */
   static delete(ownerId, id) {
-    // TODO
     try {
       return deleteFragment(ownerId, id);
     } catch (error) {
@@ -129,7 +125,6 @@ class Fragment {
    * @returns Promise
    */
   save() {
-    // TODO
     try {
       this.updated = new Date().toISOString();
       return writeFragment(this);
@@ -144,7 +139,6 @@ class Fragment {
    * @returns Promise<Buffer>
    */
   getData() {
-    // TODO
     try {
       return readFragmentData(this.ownerId, this.id);
     } catch (error) {
@@ -159,7 +153,6 @@ class Fragment {
    * @returns Promise
    */
   async setData(data) {
-    // TODO
     try {
       if (data) {
         this.updated = new Date().toISOString();
@@ -191,7 +184,6 @@ class Fragment {
    * @returns {boolean} true if fragment's type is text/*
    */
   get isText() {
-    // TODO
     const type = new RegExp('^text/*');
     return type.test(this.type);
   }
@@ -201,7 +193,6 @@ class Fragment {
    * @returns {Array<string>} list of supported mime types
    */
   get formats() {
-    // TODO
     return new Array(this.type.split(';')[0]);
   }
 
@@ -211,7 +202,6 @@ class Fragment {
    * @returns {boolean} true if we support this Content-Type (i.e., type/subtype)
    */
   static isSupportedType(value) {
-    // TODO
     const type = new RegExp('^text/*');
     if (type.test(value) || value == 'application/json' || value == 'image/png' || value == 'image/jpeg' || value == 'image/webp' || value == 'image/gif') {
       return true;
