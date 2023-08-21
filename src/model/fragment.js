@@ -211,31 +211,31 @@ class Fragment {
   }
 
   isSupportedExtension(value) {
-    if (value == '.TXT') {
+    if (value == '.txt') {
       if (this.type == 'text/plain' || this.type == 'text/markdown' || this.type == 'text/html' || this.type == 'application/json') {
         return true;
       } else {
         return false;
       }
-    } else if (value == '.MD') {
+    } else if (value == '.md') {
       if (this.type == 'text/markdown') {
         return true;
       } else {
         return false;
       }
-    } else if (value == '.HTML') {
+    } else if (value == '.html') {
       if (this.type == 'text/markdown' || this.type == 'text/html') {
         return true;
       } else {
         return false;
       }
-    } else if (value == '.JSON') {
+    } else if (value == '.json') {
       if (this.type == 'application/json') {
         return true;
       } else {
         return false;
       }
-    } else if (value == '.PNG' || value == '.JPG' || value == '.WEBP' || value == '.GIF') {
+    } else if (value == '.png' || value == '.jpg' || value == '.webp' || value == '.gif') {
       if (this.type == 'image/png' || this.type == 'image/jpeg' || this.type == 'image/webp' || this.type == 'image/gif') {
         return true;
       } else {
