@@ -40,8 +40,8 @@ jobs:
       # Elastic Beanstalk
       - name: Create compose file with specific Docker image info
         env:
-          DOCKER_REPO: ${{ steps.login-ecr.outputs.registry }}/fragments-backend
-          DOCKER_TAG: ${{ github.ref_name }}
+          DOCKER_REPO: yuelinwen/fragments-backend
+          DOCKER_TAG: latest
           COMPOSE_FILE: deploy-${{ github.ref_name }}.yml
         run: |
           envsubst < docker-compose.yml > ${{ env.COMPOSE_FILE }}
