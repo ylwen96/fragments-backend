@@ -78,7 +78,7 @@ jobs:
         env:
           # Define the variables we need to replace
           DOCKER_REPO: yuelinwen/fragments-backend
-          DOCKER_TAG: latest
+          DOCKER_TAG: ${{ github.ref_name }}
           COMPOSE_FILE: deploy-compose.yml
         run: |
           envsubst < docker-compose.yml > ${{ env.COMPOSE_FILE }}
