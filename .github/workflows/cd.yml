@@ -93,11 +93,10 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_session_token: ${{ secrets.AWS_SESSION_TOKEN }}
           region: us-east-1
           # Make sure this matches your Elastic Beanstalk application name
-          application_name: fragments
+          application_name: fragments-backend-api
           # Make sure this matches your Elastic Beanstalk environment name
-          environment_name: fragments-env
+          environment_name: Fragments-backend-api-env
           version_label: ${{ env.VERSION }}
           deployment_package: ${{ env.COMPOSE_FILE }}
