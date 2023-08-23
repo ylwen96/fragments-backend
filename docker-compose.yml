@@ -1,7 +1,7 @@
 # docker-compose.yml
 services:
   fragments:
-    image: yuelinwen/fragments-backend
+    image: yuelinwen/fragments-backend:latest
     init: true
     ports:
       - '80:8080'
