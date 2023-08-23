@@ -40,7 +40,6 @@ jobs:
           # Use our GitHub Encrypted Secrets via secrets.*
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           # Hard-code our region, which isn't a secret, and won't change
           aws-region: us-east-1
 
@@ -56,7 +55,7 @@ jobs:
           # the value from the previous step's outputs
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           # Define an Environment Variable with our ECR Repository Name
-          ECR_REPO: fragments
+          ECR_REPO: fragments-api
           # We'll give this image two different tags. First, we'll use the git tag (vX.Y.Z)
           # so that we can always go back and re-create this setup again in the future
           # if we have to test or debug something. Second, we'll also replace the
@@ -78,7 +77,7 @@ jobs:
       - name: Create compose file with specific Docker image info
         env:
           # Define the variables we need to replace
-          DOCKER_REPO: ${{ steps.login-ecr.outputs.registry }}/fragments
+          DOCKER_REPO: ${{ steps.login-ecr.outputs.registry }}/fragments-api
           DOCKER_TAG: ${{ github.ref_name }}
           COMPOSE_FILE: deploy-${{ github.ref_name }}.yml
         run: |
@@ -94,11 +93,10 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_session_token: ${{ secrets.AWS_SESSION_TOKEN }}
           region: us-east-1
           # Make sure this matches your Elastic Beanstalk application name
-          application_name: fragments
+          application_name: fragments-backend-api
           # Make sure this matches your Elastic Beanstalk environment name
-          environment_name: fragments-env
+          environment_name: fragments-api
           version_label: ${{ env.VERSION }}
           deployment_package: ${{ env.COMPOSE_FILE }}
