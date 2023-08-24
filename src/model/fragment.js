@@ -260,6 +260,8 @@ class Fragment {
         return 'image/png';
       case '.jpg':
         return 'image/jpg';
+      case '.jpeg':
+        return 'image/jpg';
       case '.webp':
         return 'image/webp';
       case '.gif':

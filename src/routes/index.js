@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
     status: 'ok',
     author,
     // Use your own GitHub URL for this...
-    githubUrl: 'https://github.com/yuelin-wen/fragments',
+    githubUrl: 'https://github.com/yuelin-wen/fragments-backend',
     version,
   });
 });

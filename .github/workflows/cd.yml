@@ -15,6 +15,8 @@ name: cd
 on:
   push:
     # Whenever a new tag is pushed
+    # branches:
+    #   - main
     tags:
       # Any tag starting with v... should trigger this workflow.
       - 'v**'
